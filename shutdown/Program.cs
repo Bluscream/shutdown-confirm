@@ -26,7 +26,7 @@ namespace Shutdown_Confirm
                 }
             }
 
-            if (skip || MessageBox.Show($"Some app wants to run {app}, accept?\n\n{argstr}", $"{app} request", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (skip || MessageBox.Show($"Some app wants to run {app}, accept?\n\n{argstr}", $"{app} request", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
 			{
 				Shutdown(app, argstr);
 			}
