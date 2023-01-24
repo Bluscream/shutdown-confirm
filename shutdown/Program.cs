@@ -7,13 +7,13 @@ using System.Windows.Forms;
 namespace Shutdown_Confirm
 {
 	internal static class Program {
-		private static List<string> allowedArgs = new List<string>(new[] { "/skip" });
+		private static List<string> allowedArgs = new List<string>(new[] { "/skip", "/a" });
 		[STAThread]
 		private static void Main(string[] args) {
             string argstr = string.Join(" ", args);
 			var app = "shutdown";
-			var skip = argstr.Contains(allowedArgs[0]);
-			argstr = argstr.Replace(allowedArgs[0], "");
+			var skip = argstr.ToLowerInvariant().Contains(allowedArgs[0]) || argstr.ToLowerInvariant().Contains(allowedArgs[1]);
+            argstr = argstr.Replace(allowedArgs[0], "");
 			foreach (var arg in args) {
 				if (arg.StartsWith("app:")) {
 					app = arg.Replace("app:", "");
