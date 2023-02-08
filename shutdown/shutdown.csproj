@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E9B281E8-FB82-45E0-BCB1-6EB9C46B1D53}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Shutdown_Confirm</RootNamespace>
     <AssemblyName>confirm</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
@@ -45,13 +45,15 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>C:\Windows\System32\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -61,6 +63,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinqBridge.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.cs" />
@@ -100,6 +103,6 @@
   <Import Project="..\packages\Costura.Fody.5.8.0-alpha0098\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.8.0-alpha0098\build\Costura.Fody.targets')" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "C:\Windows\System32\confirm.exe"
-copy "$(TargetPath)" "C:\Windows\System32\shutdown.exe"</PostBuildEvent>
+REM copy "$(TargetPath)" "C:\Windows\System32\shutdown.exe"</PostBuildEvent>
   </PropertyGroup>
 </Project>
